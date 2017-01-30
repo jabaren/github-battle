@@ -5,11 +5,12 @@ var styles = require('../styles/index');
 var UserDetailsWrapper = require('../components/UserDetailsWrapper');
 var UserDetails = require('../components/UserDetails');
 var MainContainer = require('../components/MainContainer');
+var Loading = require('../components/Loading');
 
 function ConfirmBattle (props){
 
   return props.isLoading === true
-    ? <p>Loading</p>
+    ? <Loading speed={500} text="Waiting"/>
     : (
     <MainContainer>
       <h1>Confirm Players</h1>

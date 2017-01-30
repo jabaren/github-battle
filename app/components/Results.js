@@ -5,6 +5,7 @@ var styles = require('../styles');
 var UserDetailsWrapper = require('../components/UserDetailsWrapper');
 var UserDetails = require('../components/UserDetails');
 var MainContainer = require('../components/MainContainer');
+var Loading = require('../components/Loading');
 
 //PRIVATE FUNCTION STATELESS COMPONENT
 function StartOver (){
@@ -17,22 +18,29 @@ function StartOver (){
   );
 }
 
+function Tie (props){
+  return (
+    <MainContainer>
+      <h1>It's tie!</h1>
+      <StartOver/>
+    </MainContainer>
+  );
+}
 
 function Results (props){
 
   if(props.isLoading){
     return (
-      <p>LOADING</p>
+      <Loading speed={100} text="One Moment"/>
     )
   }
 
   if(props.scores[0] === props.scores[1]) {
-    return(
-      <MainContainer>
-        <h1>It's tie!</h1>
-        <StartOver/>
-      </MainContainer>
-    )
+
+    return (
+      <Tie/>
+    );
+
   }else {
     var winningIndex = props.scores[0] > props.scores[1] ? 0 : 1;
     var losingIndex = winningIndex === 0 ? 1 : 0;
